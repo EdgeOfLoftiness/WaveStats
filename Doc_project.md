@@ -43,6 +43,25 @@ Crear una aplicación que permita capturar en tiempo real los daños infligidos 
 
 ---
 
+##  Entrenamiento con YOLO + Inferencia con ONNX
+
+Este proyecto utiliza un enfoque dividido en dos etapas principales: **entrenamiento** con YOLO (basado en PyTorch) y **ejecución/inferencia** con ONNX Runtime. Esta separación permite máxima flexibilidad y compatibilidad, especialmente en entornos con GPU AMD o sin GPU dedicada.
+
+---
+
+###  Etapa 1: Entrenamiento con YOLO
+
+YOLO se utiliza para entrenar un modelo que pueda detectar con precisión los números y efectos visuales que aparecen en pantalla durante el combate en Wuthering Waves.
+
+- Se recomienda entrenar en un entorno compatible con PyTorch (CPU o GPU).
+- Se pueden usar scripts de extracción de fotogramas desde video (`extract_frames.py`) para preparar datasets.
+- El resultado del entrenamiento es un archivo `.pt` (modelo PyTorch entrenado).
+
+```bash```
+yolo task=detect mode=train model=yolov8n.yaml data=data.yaml epochs=50 imgsz=640
+
+---
+
 ##  Consideraciones
 - Dataset entrenado con capturas y videos del juego.
 - Modelo dividido en dos versiones:
